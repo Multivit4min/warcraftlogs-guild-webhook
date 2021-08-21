@@ -90,7 +90,6 @@ configure(path_1.join(__dirname, "./config.json")).then(async (config) => {
     }`);
         await config.set({ lastQueried });
         const reports = (await res.json()).data.reportData.reports.data;
-        console.log(reports.length);
         await Promise.all(reports.map(async (report) => {
             try {
                 const res = await node_fetch_1.default(config.get("webhookUrl"), {
@@ -100,7 +99,6 @@ configure(path_1.join(__dirname, "./config.json")).then(async (config) => {
                         content: `**${report.owner.name}** started logging <https://www.warcraftlogs.com/reports/${report.code}>`
                     })
                 });
-                console.log(res.status);
             }
             catch (e) {
                 console.error("failed to post webhook");
