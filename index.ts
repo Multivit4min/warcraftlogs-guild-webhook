@@ -36,7 +36,7 @@ async function configure<T>(path: string) {
   }
 }
 
-configure<Configuration>(join(__dirname, "../config.json")).then(async config => {
+configure<Configuration>(join(__dirname, "./config.json")).then(async config => {
 
   const warcaftLogsAuth = new ClientOAuth2({
     clientId: config.get("clientId"),
